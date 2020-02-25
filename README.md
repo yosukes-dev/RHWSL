@@ -1,15 +1,15 @@
-# FedoraWSL2
-Fedora on WSL2 (Windows 10 builds 18917 or higher)
+# RHWSL(Red hat UBI on WSL2)
+Red hat redistributable Standard UBI on WSL2 (Windows 10 builds 18917 or higher)
 based on [wsldl](https://github.com/yuk7/wsldl)
 
-![screenshot](https://raw.githubusercontent.com/yosukes-dev/FedoraWSL2/master/img/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/yosukes-dev/RHWSL/master/img/screenshot.png)
 
-[![CircleCI](https://circleci.com/gh/yosukes-dev/FedoraWSL2.svg?style=svg)](https://circleci.com/gh/yosukes-dev/FedoraWSL2)
-[![Github All Releases](https://img.shields.io/github/downloads/yosukes-dev/FedoraWSL2/total.svg?style=flat-square)](https://github.com/yosukes-dev/FedoraWSL2/releases)
+[![CircleCI](https://circleci.com/gh/yosukes-dev/RHWSL.svg?style=svg)](https://circleci.com/gh/yosukes-dev/RHWSL)
+[![Github All Releases](https://img.shields.io/github/downloads/yosukes-dev/RHWSL/total.svg?style=flat-square)](https://github.com/yosukes-dev/RHWSL/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-![License](https://img.shields.io/github/license/yosukes-dev/FedoraWSL2.svg?style=flat-square)
+![License](https://img.shields.io/github/license/yosukes-dev/RHWSL.svg?style=flat-square)
 
-### [Download](https://github.com/yosukes-dev/FedoraWSL2/releases)
+### [Download](https://github.com/yosukes-dev/RHWSL/releases)
 
 
 ## Requirements
@@ -17,18 +17,35 @@ based on [wsldl](https://github.com/yuk7/wsldl)
 * Windows Subsystem for Linux feature is enabled.
 
 ## Install
-#### 1. [Download](https://github.com/yosukes-dev/FedoraWSL2/releases) installer zip
+#### 1. [Download](https://github.com/yosukes-dev/RHWSL/releases) installer zip
 
 #### 2. Extract all files in zip file to same directory
 
-#### 3.Run Fedora.exe to Extract rootfs and Register to WSL
+#### 3.Run RHWSL.exe to Extract rootfs and Register to WSL
 Exe filename is using to the instance name to register.
 If you rename it you can register with a diffrent name and have multiple installs.
 
 ## Important
-If the default version of WSL is 1, convert it with the following command.
+- If the default version of WSL is 1, convert it with the following command.
 ```dos
-wsl --set-version Fedora 2
+wsl --set-version RHWSL 2
+```
+- The rootfs included in the release file is the redistributable Standard __"Universal Base Image"__.  
+  So I don't call this project RHELWSL.  
+  __However, you can register as usual using subscription-manager and use the RHEL repositories.__
+```sh
+[root@<yourhost> RHWSL]# subscription-manager register
+You are attempting to use a locale that is not installed.
+Registering to: subscription.rhsm.redhat.com:443/subscription
+Username: <yourusername>
+Password: <yourpassword>
+The system has been registered with ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+The registered system name is: <yourhost>
+[root@<yourhost> RHWSL]# subscription-manager attach
+You are attempting to use a locale that is not installed.
+Installed Product Current Status:
+Product Name: Red Hat Enterprise Linux for x86_64
+Status:       Subscribed
 ```
 
 ## How-to-Use(for Installed Instance)
@@ -70,6 +87,6 @@ Usage :
 
 #### How to uninstall instance
 ```dos
->Fedora.exe clean
+>RHWSL.exe clean
 
 ```

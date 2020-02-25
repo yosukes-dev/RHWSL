@@ -1,10 +1,9 @@
-OUT_ZIP=Fedora31.zip
-LNCR_EXE=Fedora31.exe
+OUT_ZIP=RHWSL.zip
+LNCR_EXE=RHWSL.exe
 
 DLR=curl
 DLR_FLAGS=-L
-LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/20013100/icons.zip
-LNCR_ZIP_EXE=Fedora.exe
+LNCR_URL=https://github.com/yuk7/wsldl/releases/download/20013100/Launcher.exe
 
 all: $(OUT_ZIP)
 
@@ -20,14 +19,9 @@ ziproot: Launcher.exe rootfs.tar.gz
 	cp rootfs.tar.gz ziproot/
 
 exe: Launcher.exe
-Launcher.exe: icons.zip
+Launcher.exe:
 	@echo -e '\e[1;31mExtracting Launcher.exe...\e[m'
-	unzip icons.zip $(LNCR_ZIP_EXE)
-	mv $(LNCR_ZIP_EXE) Launcher.exe
-
-icons.zip:
-	@echo -e '\e[1;31mDownloading icons.zip...\e[m'
-	$(DLR) $(DLR_FLAGS) $(LNCR_ZIP_URL) -o icons.zip
+	$(DLR) $(DLR_FLAGS) $(LNCR_URL) -o Launcher.exe
 
 rootfs.tar.gz: rootfs
 	@echo -e '\e[1;31mBuilding rootfs.tar.gz...\e[m'
@@ -43,16 +37,15 @@ rootfs: base.tar
 
 base.tar:
 	@echo -e '\e[1;31mExporting base.tar using docker...\e[m'
-	docker run --name fedorawsl2 library/fedora:31 /bin/bash -c "dnf update -y; dnf clean all; pwconv; grpconv; chmod 0744 /etc/shadow; chmod 0744 /etc/gshadow; rm -f /etc/resolv.conf || true"
-	docker export --output=base.tar fedorawsl2
-	docker rm -f fedorawsl2
+	docker run --name rhwsl registry.access.redhat.com/ubi8/ubi:8.1-397 /bin/bash -c "dnf update -y; dnf clean all; pwconv; grpconv; chmod 0744 /etc/shadow; chmod 0744 /etc/gshadow; rm -f /etc/resolv.conf || true"
+	docker export --output=base.tar rhwsl
+	docker rm -f rhwsl
 
 clean:
 	@echo -e '\e[1;31mCleaning files...\e[m'
 	-rm ${OUT_ZIP}
 	-rm -r ziproot
 	-rm Launcher.exe
-	-rm icons.zip
 	-rm rootfs.tar.gz
 	-sudo rm -r rootfs
 	-rm base.tar
