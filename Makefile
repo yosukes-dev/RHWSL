@@ -49,3 +49,4 @@ clean:
 	-rm rootfs.tar.gz
 	-sudo rm -r rootfs
 	-rm base.tar
+	-docker rmi registry.access.redhat.com/ubi8/ubi:8.1-397
