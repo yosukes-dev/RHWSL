@@ -1,5 +1,5 @@
-# RHWSL(Red hat UBI on WSL2)
-Red hat redistributable Standard UBI on WSL2 (Windows 10 builds 18917 or higher)
+# RHWSL (Red hat UBI on WSL2)
+Red hat redistributable Standard UBI on WSL (Windows 10 Windows 10 FCU or later)
 based on [wsldl](https://github.com/yuk7/wsldl)
 
 ![screenshot](https://raw.githubusercontent.com/yosukes-dev/RHWSL/master/img/screenshot.png)
@@ -13,7 +13,7 @@ based on [wsldl](https://github.com/yuk7/wsldl)
 
 
 ## Requirements
-* Windows 10 builds 18917 or higher. (Testing with build 19551)
+* Windows 10 Fall Creators Update x64 or later. (Testing Environment: WSL:build.18363, WSL2:build.19569)
 * Windows Subsystem for Linux feature is enabled.
 
 ## Install
@@ -25,11 +25,13 @@ based on [wsldl](https://github.com/yuk7/wsldl)
 Exe filename is using to the instance name to register.
 If you rename it you can register with a diffrent name and have multiple installs.
 
-## Important
-- If the default version of WSL is 1, convert it with the following command.
+## (Option)
+- If you want to use WSL2, convert it with the following command.
 ```dos
 wsl --set-version RHWSL 2
 ```
+
+## Important
 - The rootfs included in the release file is the redistributable Standard __"Universal Base Image"__.  
   So I don't call this project RHELWSL.  
   __However, you can register as usual using subscription-manager and use the RHEL repositories.__
