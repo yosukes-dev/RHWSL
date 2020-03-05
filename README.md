@@ -1,4 +1,4 @@
-# RHWSL (Red hat UBI on WSL2)
+# RHWSL (Red hat UBI on WSL)
 Red hat redistributable Standard UBI on WSL (Windows 10 Windows 10 FCU or later)
 based on [wsldl](https://github.com/yuk7/wsldl)
 
