@@ -31,9 +31,8 @@ If you rename it you can register with a diffrent name and have multiple install
 wsl --set-version RHWSL 2
 ```
 
-## Important
+## Subscription Manager
 - The rootfs included in the release file is the redistributable Standard __"Universal Base Image"__.  
-  So I don't call this project RHELWSL.  
   __However, you can register as usual using subscription-manager and use the RHEL repositories.__
 ```sh
 [root@<yourhost> RHWSL]# subscription-manager register
