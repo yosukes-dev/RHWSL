@@ -3,7 +3,7 @@ LNCR_EXE=RHWSL.exe
 
 DLR=curl
 DLR_FLAGS=-L
-LNCR_URL=https://github.com/yuk7/wsldl/releases/download/20013100/Launcher.exe
+LNCR_URL=https://github.com/yuk7/wsldl/releases/download/20040300/Launcher.exe
 
 all: $(OUT_ZIP)
 
