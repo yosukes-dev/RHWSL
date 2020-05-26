@@ -13,7 +13,7 @@ based on [wsldl](https://github.com/yuk7/wsldl)
 
 
 ## Requirements
-* Windows 10 Fall Creators Update x64 or later. (Testing Environment: WSL:build.18363, WSL2:build.19592)
+* Windows 10 Fall Creators Update x64 or later. (Testing Environment: WSL:build.18363, WSL2:build.19631)
 * Windows Subsystem for Linux feature is enabled.
 
 ## Install
