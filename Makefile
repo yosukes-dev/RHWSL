@@ -37,7 +37,7 @@ rootfs: base.tar
 
 base.tar:
 	@echo -e '\e[1;31mExporting base.tar using docker...\e[m'
-	docker run --name rhwsl registry.access.redhat.com/ubi8/ubi:8.2-265 /bin/bash -c "dnf update -y; dnf clean all; pwconv; grpconv; chmod 0744 /etc/shadow; chmod 0744 /etc/gshadow;"
+	docker run --name rhwsl registry.access.redhat.com/ubi8/ubi:8.2-299.1592810498 /bin/bash -c "dnf update -y; dnf clean all; pwconv; grpconv; chmod 0744 /etc/shadow; chmod 0744 /etc/gshadow;"
 	docker export --output=base.tar rhwsl
 	docker rm -f rhwsl
 
@@ -49,4 +49,4 @@ clean:
 	-rm rootfs.tar.gz
 	-sudo rm -r rootfs
 	-rm base.tar
-	-docker rmi registry.access.redhat.com/ubi8/ubi:8.2-265
+	-docker rmi registry.access.redhat.com/ubi8/ubi:8.2-299.1592810498
