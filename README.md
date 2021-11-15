@@ -107,7 +107,14 @@ Usage :
 ```
 
 #### Change Default User(id command required)
+
+The following is an example of adding a user to the "users" and "wheel" groups and setting it as the default user
+
+_Note: Replace `user` with your chosen user name._
+
 ```cmd
+>RHWSL.exe run useradd -m -g users -G wheel -s /bin/bash user
+
 >RHWSL.exe config --default-user user
 
 >RHWSL.exe
