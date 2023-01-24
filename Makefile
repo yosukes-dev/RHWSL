@@ -3,7 +3,7 @@ LNCR_EXE=RHWSL.exe
 
 DLR=curl
 DLR_FLAGS=-L
-LNCR_URL=https://github.com/yuk7/wsldl/releases/download/21082800/wsldl.exe
+LNCR_URL=https://github.com/yuk7/wsldl/releases/download/22020900/wsldl.exe
 
 all: $(OUT_ZIP)
 
@@ -37,7 +37,7 @@ rootfs: base.tar
 
 base.tar:
 	@echo -e '\e[1;31mExporting base.tar using docker...\e[m'
-	docker run --name rhwsl registry.access.redhat.com/ubi9/ubi:9.0.0-1468.1655190709 /bin/bash -c "dnf update -y; dnf clean all; pwconv; grpconv; chmod 0744 /etc/shadow; chmod 0744 /etc/gshadow;"
+	docker run --name rhwsl registry.access.redhat.com/ubi9/ubi:9.1.0-1750 /bin/bash -c "dnf update -y; dnf clean all; pwconv; grpconv; chmod 0744 /etc/shadow; chmod 0744 /etc/gshadow;"
 	docker export --output=base.tar rhwsl
 	docker rm -f rhwsl
 
@@ -49,4 +49,4 @@ clean:
 	-rm rootfs.tar.gz
 	-sudo rm -r rootfs
 	-rm base.tar
-	-docker rmi registry.access.redhat.com/ubi9/ubi:9.0.0-1468.1655190709
+	-docker rmi registry.access.redhat.com/ubi9/ubi:9.1.0-1750
